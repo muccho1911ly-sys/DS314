@@ -1,0 +1,55 @@
+# Build FAISS HNSW indexes for SigLIP2-GOPT16-384
+# 1) CAM data (N001-N099)
+# 2) AIC data M01-M10 + S01
+# Chạy: cd backend && python scripts/build_all_indexes.py --config configs/build_indexes_siglip2_gopt16_384.yaml
+
+# Common index settings
+index_defaults:
+  type: hnsw
+  metric: cosine
+  hnsw_m: 32
+  ef_construction: 400
+  ef_search: 399
+
+models:
+  # --- CAM: all N001-N099 batches ---
+  - name: siglip2_gopt16_384_cam
+    embeddings_root: D:/new_ERS/event-retrieval-system/data/CAM/embeddings/embeddings_siglip2_gopt16_384
+    keyframes_root: D:/new_ERS/event-retrieval-system/data/CAM/keyframes
+    map_keyframes_root: D:/new_ERS/event-retrieval-system/data/CAM/map-keyframes
+    output_dir: D:/new_ERS/event-retrieval-system/data/CAM/database/faiss_hnsw_siglip2_gopt16_384
+    index_name: keyframes.faiss
+    metadata_name: metadata.csv
+    collection: cam
+
+  # --- AIC: L21-L30 + M01-M10 + S01 ---
+  - name: siglip2_gopt16_384_aic
+    embeddings_root: D:/new_ERS/event-retrieval-system/data/AIC/embeddings/embeddings_siglip2_gopt16_384
+    keyframes_root: D:/new_ERS/event-retrieval-system/data/AIC/keyframes
+    map_keyframes_root: D:/new_ERS/event-retrieval-system/data/AIC/map-keyframes
+    output_dir: D:/new_ERS/event-retrieval-system/data/AIC/database/faiss_hnsw_siglip2_gopt16_384
+    index_name: keyframes.faiss
+    metadata_name: metadata.csv
+    collection: aic
+    datasets:
+      - L21
+      - L22
+      - L23
+      - L24
+      - L25
+      - L26
+      - L27
+      - L28
+      - L29
+      - L30
+      - M01
+      - M02
+      - M03
+      - M04
+      - M05
+      - M06
+      - M07
+      - M08
+      - M09
+      - M10
+      - S01

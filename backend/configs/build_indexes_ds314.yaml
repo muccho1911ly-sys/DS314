@@ -1,0 +1,38 @@
+# Run from backend: python scripts/build_all_indexes.py --config configs/build_indexes_ds314.yaml
+# These are the imported checkpoints, distinct from AIC's SigLIP2 gopt16.
+keyframes_root: ../data/DS314/keyframes
+map_keyframes_root: ../data/DS314/map-keyframes
+index_defaults:
+  type: hnsw
+  metric: cosine
+  hnsw_m: 32
+  ef_construction: 400
+  ef_search: 399
+models:
+  - name: siglip2_so400m
+    dimension: 1152
+    collection: ds314
+    embeddings_root: ../data/DS314/embeddings/embeddings_siglip2_so400m
+    output_dir: ../data/DS314/database/faiss_hnsw_siglip2_so400m
+  - name: siglip2_giant
+    dimension: 1536
+    collection: ds314
+    embeddings_root: ../data/DS314/embeddings/embeddings_siglip2_giant
+    output_dir: ../data/DS314/database/faiss_hnsw_siglip2_giant
+  - name: qwen3_vl_2b
+    dimension: 2048
+    collection: ds314
+    embeddings_root: ../data/DS314/embeddings/embeddings_qwen3_vl_2b
+    output_dir: ../data/DS314/database/faiss_hnsw_qwen3_vl_2b
+  - name: clip_b32
+    collection: ds314
+    embeddings_root: ../data/DS314/embeddings/embeddings_clip_b32
+    output_dir: ../data/DS314/database/faiss_hnsw_clip_b32
+  - name: siglip2_384
+    collection: ds314
+    embeddings_root: ../data/DS314/embeddings/embeddings_siglip2_384
+    output_dir: ../data/DS314/database/faiss_hnsw_siglip2_384
+  - name: jina_clip_v2
+    collection: ds314
+    embeddings_root: ../data/DS314/embeddings/embeddings_jina_clip_v2
+    output_dir: ../data/DS314/database/faiss_hnsw_jina_clip_v2

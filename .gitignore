@@ -1,0 +1,16 @@
+/data/
+/.temp_configs/
+.env
+.env.*
+!.env.example
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.cache/
+.checkpoints/
+node_modules/
+dist/
+*.log
+*.log.*
+*.pid

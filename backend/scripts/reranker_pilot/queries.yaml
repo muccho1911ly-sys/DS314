@@ -1,0 +1,29 @@
+# Fill each query with observable events from the selected video.
+# Use the parser's explicit temporal connector THEN between ordered events.
+# Example shape only: "a person enters the room THEN sits at a desk".
+dataset: aic
+video_id: L21_V001
+backend_url: http://127.0.0.1:8000
+reranker_url: http://127.0.0.1:8001
+reranker_model: Qwen/Qwen3-VL-Reranker-2B
+model_key: siglip2-gopt16
+top_k: 10
+candidate_multiplier: 4
+duration_limit: -1
+use_split: true
+queries:
+  - id: two_events
+    query: ""
+    ground_truth_video_id: L21_V001
+    ground_truth_start_sec: null
+    ground_truth_end_sec: null
+  - id: three_events
+    query: ""
+    ground_truth_video_id: L21_V001
+    ground_truth_start_sec: null
+    ground_truth_end_sec: null
+  - id: four_events
+    query: ""
+    ground_truth_video_id: L21_V001
+    ground_truth_start_sec: null
+    ground_truth_end_sec: null

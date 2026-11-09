@@ -1,0 +1,52 @@
+# Config để build FAISS indexes cho nhiều models cùng lúc
+# Chạy: python backend/scripts/build_all_indexes.py
+
+# Common paths
+keyframes_root: D:/new_ERS/event-retrieval-system/data/processed/keyframes
+map_keyframes_root: D:/new_ERS/event-retrieval-system/data/processed/map_keyframes
+
+# Common index settings
+index_defaults:
+  type: hnsw
+  metric: cosine
+  hnsw_m: 32
+  ef_construction: 400
+  ef_search: 399
+
+# Models to build (comment out bằng # để skip)
+models:
+  # --- SigLIP-G ---
+  - name: siglip_g
+    embeddings_root: D:/new_ERS/event-retrieval-system/data/embeddings/embeddings_siglip_g
+    output_dir: D:/new_ERS/event-retrieval-system/data/database/faiss_hnsw_siglip_g
+    index_name: keyframes.faiss
+    metadata_name: metadata.csv
+    ef_construction: 400
+    ef_search: 399
+
+  # --- TIPSv2-G ---
+  - name: tipsv2_g
+    embeddings_root: D:/new_ERS/event-retrieval-system/data/embeddings/embeddings_tipsv2_g
+    output_dir: D:/new_ERS/event-retrieval-system/data/database/faiss_hnsw_tipsv2_g
+    index_name: keyframes.faiss
+    metadata_name: metadata.csv
+    ef_construction: 400
+    ef_search: 399
+
+  # --- PE-Core-G ---
+  - name: pe_core_g
+    embeddings_root: D:/new_ERS/event-retrieval-system/data/embeddings/embeddings_pe_core_g
+    output_dir: D:/new_ERS/event-retrieval-system/data/database/faiss_hnsw_pe_core_g
+    index_name: keyframes.faiss
+    metadata_name: metadata.csv
+    ef_construction: 400
+    ef_search: 399
+
+  # --- DFN ViT-H/14-378 (đã có embeddings) ---
+  # - name: dfn_vit_h14_378
+  #   embeddings_root: D:/new_ERS/event-retrieval-system/data/embeddings/embeddings_dfn_vit_h14_378
+  #   output_dir: D:/new_ERS/event-retrieval-system/data/database/faiss_hnsw_dfn_vit_h14_378
+  #   index_name: keyframes.faiss
+  #   metadata_name: metadata.csv
+  #   ef_construction: 400
+  #   ef_search: 399
