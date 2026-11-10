@@ -121,8 +121,8 @@ event-retrieval-system/
 Dùng Python 3.13 (64 bit) và Node.js 24. Máy chạy Qwen3-VL 4-bit cần GPU NVIDIA có CUDA hoạt động.
 
 ```powershell
-git clone https://github.com/muccho1911ly-sys/event-retrieval-system.git
-cd event-retrieval-system
+git clone https://github.com/muccho1911ly-sys/DS314.git
+cd DS314
 ```
 
 Đặt bộ dữ liệu được cung cấp riêng vào `data/DS314/` ở gốc repo. Cần thư mục
@@ -130,6 +130,8 @@ cd event-retrieval-system
 Với cấu hình mặc định, `database/` cần các thư mục `faiss_hnsw_siglip2_so400m`,
 `faiss_hnsw_siglip2_giant`, `faiss_hnsw_qwen3_vl_2b` và `faiss_hnsw_jina_clip_v2`.
 Mỗi thư mục cần `keyframes.faiss`, `metadata.csv` và `vectors_fp32.npy`.
+Thư mục `data/DS314/experiments/` chỉ dùng khi cần đối chiếu hoặc import lại embedding.
+Khi đã có database, bạn có thể chạy backend, frontend và test truy vấn với các thư mục ở trên.
 
 ### Backend
 
